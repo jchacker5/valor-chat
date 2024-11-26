@@ -15,7 +15,9 @@
     "db:push": "drizzle-kit push",
     "db:pull": "drizzle-kit pull",
     "db:check": "drizzle-kit check",
-    "db:up": "drizzle-kit up"
+    "db:up": "drizzle-kit up",
+    "create-admin": "tsx -r tsconfig-paths/register scripts/create-admin.ts",
+    "check-users": "tsx scripts/check-users.ts"
   },
   "dependencies": {
     "@ai-sdk/openai": "1.0.0-canary.3",

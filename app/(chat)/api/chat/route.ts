@@ -7,6 +7,7 @@ import {
 } from 'ai';
 import { z } from 'zod';
 
+import { auth } from '@/app/(auth)/auth';
 import { customModel } from '@/lib/ai';
 import { models } from '@/lib/ai/models';
 import { systemPrompt } from '@/lib/ai/prompts';
@@ -54,6 +55,12 @@ export async function POST(request: Request) {
   }: { id: string; messages: Array<Message>; modelId: string } =
     await request.json();
 
+  const session = await auth();
+
+  if (!session || !session.user || !session.user.id) {
+    return new Response('Unauthorized', { status: 401 });
+  }
+
   const model = models.find((model) => model.id === modelId);
 
   if (!model) {
@@ -71,7 +78,7 @@ export async function POST(request: Request) {
 
   if (!chat) {
     const title = await generateTitleFromUserMessage({ message: userMessage });
-    await saveChat({ id, userId: 'anonymous', title });
+    await saveChat({ id, userId: session.user.id, title });
   }
 
   await saveMessages({
