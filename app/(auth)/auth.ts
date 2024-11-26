@@ -1,3 +1,5 @@
+// Comment out entire file
+/*
 import { compare } from 'bcrypt-ts';
 import NextAuth, { type User, type Session } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
@@ -53,3 +55,4 @@ export const {
     },
   },
 });
+*/

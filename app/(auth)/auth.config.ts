@@ -1,3 +1,5 @@
+// Comment out entire file
+/*
 import type { NextAuthConfig } from 'next-auth';
 
 export const authConfig = {
@@ -37,3 +39,4 @@ export const authConfig = {
     },
   },
 } satisfies NextAuthConfig;
+*/
